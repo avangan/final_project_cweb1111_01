@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Transitive by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<div class="logo"><a href="index.html">Transitive <span>by TEMPLATED</span></a></div>
+				<a href="#menu" class="toggle"><span>Menu</span></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="one" class="wrapper style2">
+				<div class="inner">
+					<div>
+						<div class="box">
+							<div class="content">
+								<!-- 
+									Place Chart Here
+
+								-->
+  								<div id="chart_div"></div>
+  								<div id="chart_div2"></div>
+  								<div id="chart_div3"></div>
+  								<!-- 
+									Place Chart Here
+
+								-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="resturantinfo.js"></script>
+
+			<script type="text/javascript">
+				
+
+				//	Call once
+				google.charts.load('current', {packages: ['corechart', 'bar']});
+
+				//	Call for each chart
+				google.charts.setOnLoadCallback(function(){ drawChart1(data) });
+				google.charts.setOnLoadCallback(function(){ drawChart2(data) });
+				google.charts.setOnLoadCallback(function(){ drawChart3(data) });
+				
+
+				//	Create new function for each chart
+				function drawChart1(jsonObject) {
+					//	Count number with bar
+					var withBarCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Bar == "Yes") {
+							withBarCount++;
+						}
+					}
+
+					//	Count number with brunch
+					var withBrunchCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Brunch == "Yes") {
+							withBrunchCount++;
+						}
+					}
+
+					//	Count number with both
+					var withBothCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Brunch == "Yes") {
+							if (jsonObject[entry].Bar == "Yes") {
+								withBothCount++;
+							}
+						}
+					}
+
+
+      				var data = new google.visualization.DataTable();
+      				var data = google.visualization.arrayToDataTable([
+        				['Year', 'Number', { role: 'style' } ],
+        				['hasBar', withBarCount, 'color: gray'],
+        				['hasBrunch', withBrunchCount, 'color: gray'],
+        				['hasBoth', withBothCount, 'color: gray'],
+      				]);
+				
+      				var options = {
+        				title: 'Resturants',
+        				hAxis: {
+          				title: 'Resturants',
+          				format: 'h:mm a',
+          				viewWindow: {
+            				min: [7, 30, 0],
+            				max: [17, 30, 0]
+          				}
+        				},
+        				legend: 'none',
+        				vAxis: {
+          				title: 'Number'
+        				}
+      				};
+					
+					//	Update 'chart_div' for each function to coralate with the correct chart DIV
+      				var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      				chart.draw(data, options);
+    			}
+
+    			//	Create new function for each chart
+				function drawChart2(jsonObject) {
+					//	Count number downtown
+					var downTownCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "downtown") {
+							downTownCount++;
+						}
+					}
+
+					//	Count number St Paul
+					var stPaulCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "St Paul") {
+							stPaulCount++;
+						}
+					}
+
+					//	Count number Lowertown
+					var lowertownCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "Lowertown") {
+							lowertownCount++;
+						}
+					}
+
+					//	Count number uptown
+					var upTownCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "Uptown, MN") {
+							upTownCount++;
+						}
+					}
+
+					//	Count number Northeast Minneapolis
+					var neMCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "Northeast Minneapolis") {
+							neMCount++;
+						}
+					}
+
+					//	Count number St. Anthony Village
+					var sAVCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "St. Anthony Village") {
+							sAVCount++;
+						}
+					}
+
+					//	Count number St. Anthony Main
+					var sAMCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "St. Anthony Main") {
+							sAMCount++;
+						}
+					}
+
+					//	Count number St. Anthony West
+					var sAWCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "St. Anthony West") {
+							sAWCount++;
+						}
+					}
+
+					//	Count number St. Anthony East
+					var sAECount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "St. Anthony East") {
+							sAECount++;
+						}
+					}
+
+					//	Count number NE Minneapolis Arts District
+					var nEMADCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "NE Minneapolis Arts District") {
+							nEMADCount++;
+						}
+					}
+
+					//	Count number Southwest Minneapolis
+					var sWMCount = 0;
+					for (var entry in jsonObject) {
+						if (jsonObject[entry].Location == "Southwest Minneapolis") {
+							sWMCount++;
+						}
+					}
+
+      				var data = new google.visualization.DataTable();
+      				var data = google.visualization.arrayToDataTable([
+        				['Year', 'Number', { role: 'style' } ],
+        				['downTown', downTownCount, 'color:gray'],
+						['stPaul', stPaulCount, 'color:gray'],
+						['lowertown', lowertownCount, 'color:gray'],
+						['upTown', upTownCount, 'color:gray'],
+						['neM', neMCount, 'color:gray'],
+						['sAV', sAVCount, 'color:gray'],
+						['sAM', sAMCount, 'color:gray'],
+						['sAW', sAWCount, 'color:gray'],
+						['sAE', sAECount, 'color:gray'],
+						['nEMAD', nEMADCount, 'color:gray'],
+						['sWM', sWMCount, 'color:gray'],
+      				]);
+				
+      				var options = {
+        				title: 'Resturants By Location',
+        				hAxis: {
+          				title: 'Resturants By Location',
+          				format: 'h:mm a',
+          				viewWindow: {
+            				min: [7, 30, 0],
+            				max: [17, 30, 0]
+          				}
+        				},
+        				legend: 'none',
+        				vAxis: {
+          				title: 'Number'
+        				}
+      				};
+					
+					//	Update 'chart_div' for each function to coralate with the correct chart DIV
+      				var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+      				chart.draw(data, options);
+    			}
+
+
+    			//	Create new function for each chart
+				function drawChart3(jsonObject) {
+
+					var types = [];
+					var numberOfEach = [];
+					var combined = [];
+
+					//	Add each type to array
+					for (var entry in jsonObject) {
+						if (!types.includes(jsonObject[entry].Type.toLowerCase())) {
+							types.push(jsonObject[entry].Type.toLowerCase());
+						}
+					}
+					//console.log(types);
+
+					//	Search Object for each Type in array
+					for (var i = 0; i < types.length; i++) {
+						//	Set count to 0
+    					var typeCount = 0;
+    					//	Searching the object
+						for (var entry in jsonObject) {
+							//	If the type matches the type in array
+							if (jsonObject[entry].Type.toLowerCase() == types[i]) {
+								typeCount++;
+							}
+						}
+						combined.push([typeCount, types[i]]);
+					}
+
+					//	Sort array by the number of resturants
+					combined.sort(function(a,b) {
+    					return a[0]-b[0]
+					});
+
+					//	Reverse it to put the highest at the top
+					combined.reverse()
+					
+					console.log();
+
+      				var data = new google.visualization.DataTable();
+      				var data = google.visualization.arrayToDataTable([
+        				['Year', 'Number', { role: 'style' } ],
+        				[combined[0][1], combined[0][0], 'color: gray'],
+        				[combined[1][1], combined[1][0], 'color: gray'],
+        				[combined[2][1], combined[2][0], 'color: gray'],
+      				]);
+				
+      				var options = {
+        				title: 'Top 3 Types',
+        				hAxis: {
+          				title: 'Top 3 Types',
+          				format: 'h:mm a',
+          				viewWindow: {
+            				min: [7, 30, 0],
+            				max: [17, 30, 0]
+          				}
+        				},
+        				legend: 'none',
+        				vAxis: {
+          				title: 'Number'
+        				}
+      				};
+					
+					//	Update 'chart_div' for each function to coralate with the correct chart DIV
+      				var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+      				chart.draw(data, options);
+    			}
+			</script>
+
+	</body>
+</html>
